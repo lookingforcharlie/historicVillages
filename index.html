@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- BootStrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Assign #2 - Map Application</title>
+  </head>
+  <body>
+    <!-- navbar turns into Hamburger when reaches md, you can change it to md or lg -->
+    <nav class="navbar fixed-top navbar-expand-md shadow p-30 mb-5 bg-white">
+      <div class="container">
+        <img
+          class="d-inline-block pe-4"
+          src="https://www.historicvillage.co.nz/Portals/6/historic_village_logo.jpg?ver=4xr3h6VgNfnaXbrifAevyg%3D%3D"
+          height="50px"
+        />
+        <a href="#" class="navbar-brand mb-0 h1 text-wrap"
+          >Historic Villages in Oakville</a
+        >
+
+        <button
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          class="navbar-toggler"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+              <a href="#" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a href="#" class="nav-link active">Villages</a>
+            </li>
+            <li class="nav-item active">
+              <a href="#" class="nav-link active">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- navbar ends -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div id="map"></div>
+        </div>
+
+        <div class="col-md-3" style="background-color: #d8def1">
+          <div class="card mt-3" style="width: 18rem, auto">
+            <div class="card-header h5">Map Markers Filter</div>
+            <div class="list-group list-group-flush">
+              <button class="list-group-item" id="corner">
+                Show Category of Corner
+              </button>
+              <button class="list-group-item" id="hollow">
+                Show Category of Hollow
+              </button>
+              <button class="list-group-item" id="village">
+                Show Category of Village
+              </button>
+              <button class="list-group-item" id="town">
+                Show Category of Town
+              </button>
+              <button class="list-group-item" id="all">Show All Markers</button>
+            </div>
+          </div>
+          <hr />
+
+          <div>
+            <button class="btn btn-outline-dark" id="currentLocation">
+              Show My Current Location
+            </button>
+          </div>
+          <hr />
+
+          <div class="address">
+            <form id="locForm">
+              <fieldset>
+                <legend class="h5">Find Start Point On The Map</legend>
+                <div class="mb-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="addressInput"
+                    placeholder="Input your address"
+                    size="30"
+                    required
+                  />
+                </div>
+                <button
+                  class="btn btn-outline-dark"
+                  id="addressButton"
+                  type="submit"
+                >
+                  Mark location on the map
+                </button>
+              </fieldset>
+            </form>
+          </div>
+          <br />
+
+          <div>
+            <form id="directionForm">
+              <fieldset>
+                <legend class="h5">Find Direction to Historic Villages</legend>
+                <div class="mb-1">
+                  <label class="form-label" for="start"
+                    >Pick Your Start:
+                  </label>
+                  <select class="form-select" id="start" name="start" required>
+                    <option value="start" disabled selected hidden>
+                      -- Pick Your Start --
+                    </option>
+                  </select>
+                </div>
+
+                <div class="mb-1">
+                  <label class="form-label" for="destination"
+                    >Pick Historic Village:
+                  </label>
+                  <select
+                    class="form-select"
+                    id="destination"
+                    name="destination"
+                    required
+                  ></select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="commute"
+                    >How do you commute:
+                  </label>
+                  <select
+                    class="form-select"
+                    id="commute"
+                    name="commute"
+                    required
+                  >
+                    <option value="DRIVING">Driving</option>
+                    <option value="WALKING">Walking</option>
+                    <option value="BICYCLING">Bicycling</option>
+                    <option value="TRANSIT">Transit</option>
+                  </select>
+                </div>
+
+                <button
+                  class="btn btn-outline-dark"
+                  id="addressButton"
+                  type="submit"
+                >
+                  Get Direction
+                </button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- main ends -->
+
+    <footer
+      class="bg-success text-dark mt-4 pt-4 pb-4"
+      style="--bs-bg-opacity: 0.2"
+      id="footer"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <div>Oct 2022 @Mohawk College</div>
+          </div>
+          <div class="col-md-5">
+            <div>Map Application - Author: Xiaobing Feng</div>
+          </div>
+        
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript CDN bundle (including Popper for positioning dropdowns, poppers, and tooltips) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbsua4EskTMpwMIvO5vkvTgw35rhCwTfs&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+    <script src="historicVillages.js"></script>
+
+    <script src="map.js"></script>
+  </body>
+</html>
