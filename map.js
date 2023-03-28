@@ -174,7 +174,8 @@ document.querySelector('#currentLocation').addEventListener('click', () => {
 const geoCode = async (e) => {
   e.preventDefault();
   const loc = document.querySelector('#addressInput').value;
-  const key = 'AIzaSyCbsua4EskTMpwMIvO5vkvTgw35rhCwTfs';
+  // const key = 'AIzaSyCbsua4EskTMpwMIvO5vkvTgw35rhCwTfs';
+  const key = 'AIzaSyATmbWyc-LDt9jecM-XAL0-_m3dvwv5vQo';
 
   try {
     const res = await fetch(
